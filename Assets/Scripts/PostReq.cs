@@ -11,7 +11,7 @@ namespace apiModele
         string bodyJsonString;
         public string res;
 
-        public JsonPostReq(string url,string bodyJsonString)
+        public JsonPostReq(string url,string bodyJsonString = " ")
         {
             this.url = url;
             this.bodyJsonString = bodyJsonString;

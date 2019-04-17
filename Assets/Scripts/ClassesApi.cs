@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace apiModele
 {
@@ -53,21 +54,24 @@ namespace apiModele
 
         public IEnumerator ConnectUser(Action<bool, string> Callback)
         {
-            Debug.Log(Constantes.urlApi + Constantes.uriConnect);
-            JsonPostReq testConn = new JsonPostReq(Constantes.urlApi + Constantes.uriConnect, ToJson());
-            yield return testConn.PostRequest();
+            ClassRequest testConn = new ClassRequest(Constantes.urlApi + Constantes.uriConnect, ToJson());
+            yield return testConn.PostRequest<Token>();
             password = null;
-            Message message = JsonUtility.FromJson<Message>(testConn.res);
+
             //Message message = JsonClass.ArrayFromJson<Message>(testConn.res);
 
-            if (message.message != null)
+            if (testConn.result.Length == 0)
             {
                 Callback(false, "Identifiants incorrects");
             }
             else
             {
-                token = JsonUtility.FromJson<Token>(testConn.res);
-                Callback(true, ToJson());
+            /*
+                foreach(Token res in testConn.result)
+                {
+                    Debug.Log(res);
+                }
+              */  Callback(true, ToJson());
             }
 
         }
@@ -97,6 +101,5 @@ namespace apiModele
         public Vehicle vehicle;
         public User user;
     }
-
 
 }
