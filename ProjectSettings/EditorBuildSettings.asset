@@ -11,7 +11,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/affichage.unity
     guid: 3da526a0b3247d04093cb0f8ea5923ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/reservation.unity
     guid: c76857a246c89aa4d8ba48f661c4b3d1
+  - enabled: 1
+    path: Assets/Scenes/ChoixDateRes.unity
+    guid: 1bd60e0145a39a845a44e3ce0ee288f8
+  - enabled: 1
+    path: Assets/Scenes/ChoixVehiculeRes.unity
+    guid: 497f81de33844084dac73cab6015e2f2
+  - enabled: 1
+    path: Assets/Scenes/EditionCorpsRes.unity
+    guid: 8231438071849e448b81ae6acb2497d7
   m_configObjects: {}

@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ListItemController : MonoBehaviour
+namespace apiModele
 {
-    public Text Registration, Start, End;
+    public class ListItemController : MonoBehaviour
+    {
+        public Text Registration, Start, End, Purpose, Description;
+        public Usage usage;
+    }
 }
+

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,7 @@ namespace apiModele
     {
         public TMP_InputField email;
         public TMP_InputField mdp;
+        private User curUser;
 
         private void Awake()
         {
@@ -29,9 +31,31 @@ namespace apiModele
 
         public void ConnexionApi()
         {
-            User curUser = new User(email.text, mdp.text);
+            curUser = new User(email.text, mdp.text);
             //string userJson = curUser.UserToJson();
-            StartCoroutine(curUser.ConnectUser(SetUser));
+            StartCoroutine(UserLogin(SetUser));
+        }
+
+        private IEnumerator UserLogin(Action<bool, string> Callback)
+        {
+            Debug.Log(Constantes.urlApi + Constantes.uriGetUserByEmail + email.text);
+            ClassRequest getUser = new ClassRequest(Constantes.urlApi + Constantes.uriGetUserByEmail + email.text);
+            yield return getUser.GetRequest(Debug.Log);
+            ClassRequest testConn = new ClassRequest(Constantes.urlApi + Constantes.uriConnect, curUser.ToJson());
+            yield return testConn.PostRequest(Debug.Log);
+            curUser.password = null;
+            Debug.Log(getUser.json);
+            curUser = JsonUtility.FromJson<User>(getUser.json);
+            curUser.token = JsonUtility.FromJson<Token>(testConn.json);
+            Debug.Log(curUser._id);
+            if (curUser.token is null)
+            {
+                Callback(false, "Identifiants incorrects");
+            }
+            else
+            {
+                Callback(true, curUser.ToJson());
+            }
         }
 
         private void SetUser(bool isConnect, string userJson)
