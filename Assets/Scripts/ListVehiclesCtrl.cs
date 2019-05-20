@@ -30,6 +30,11 @@ namespace apiModele
                 GameObject newVehicle = Instantiate(ListItemPrefab) as GameObject;
                 ListItemVehicle controller = newVehicle.GetComponent<ListItemVehicle>();
                 controller.Registration.text = vehicle.registration;
+                controller.Description.text = vehicle.description;
+                controller.Range.text = vehicle.range.ToString();
+                controller.Places.text = vehicle.place.ToString();
+                controller.Energy.text = vehicle.energy;
+                controller.Category.text = vehicle.Category.name;
                 controller.vehicle = vehicle;
                 newVehicle.transform.parent = ContentPanel.transform;
                 newVehicle.transform.localScale = Vector3.one;

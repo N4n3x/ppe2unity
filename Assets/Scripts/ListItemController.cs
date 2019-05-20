@@ -7,7 +7,7 @@ namespace apiModele
 {
     public class ListItemController : MonoBehaviour
     {
-        public Text Registration, Start, End, Purpose, Description;
+        public Text Registration, Start, End, Purpose, Description, User;
         public Usage usage;
     }
 }

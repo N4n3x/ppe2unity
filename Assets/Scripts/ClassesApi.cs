@@ -6,6 +6,9 @@ using UnityEngine.Networking;
 
 namespace apiModele
 {
+    /// <summary>
+    /// Représente un token
+    /// </summary>
     [Serializable]
     public class Token
     {
@@ -52,29 +55,6 @@ namespace apiModele
         {
             return JsonUtility.ToJson(this);
         }
-
-        //public IEnumerator ConnectUser(Action<bool, string> Callback)
-        //{
-        //    ClassRequest testConn = new ClassRequest(Constantes.urlApi + Constantes.uriConnect, ToJson());
-        //    yield return testConn.PostRequest(Debug.Log);
-        //    password = null;
-        //    // Debug.Log(testConn.json);
-        //    token = JsonUtility.FromJson<Token>(testConn.json);
-            
-        //    // Debug.Log(token);
-        //    if (token.token is null)
-        //    {
-        //        Callback(false, "Identifiants incorrects");
-        //    }
-        //    else
-        //    {
-        //        ClassRequest getUser = new ClassRequest(Constantes.urlApi + Constantes.uriGetUserByEmail + email, ToJson());
-        //        yield return getUser.PostRequest(Debug.Log);
-                
-        //        Callback(true, ToJson());
-        //    }
-
-        //}
     }
 
     [Serializable]
@@ -103,7 +83,7 @@ namespace apiModele
         public Vehicle vehicle;
         public User user;
 
-        public Usage(string inStart, string inEnd,Vehicle inVehicle,User inUser, string inPurpose = " ", string inDescrition = " ", bool inDisable = false, int inKm = 0)
+        public Usage(string inStart, string inEnd, Vehicle inVehicle, User inUser, string inPurpose = " ", string inDescrition = " ", bool inDisable = false, int inKm = 0)
         {
             start = inStart;
             end = inEnd;

@@ -35,6 +35,7 @@ namespace apiModele
                 controller.Registration.text = usage.vehicle.registration.ToUpper();
                 controller.Purpose.text = usage.purpose;
                 controller.Description.text = usage.description;
+                controller.User.text = usage.user.name;
                 newUsage.transform.parent = ContentPanel.transform;
                 newUsage.transform.localScale = Vector3.one;
             }

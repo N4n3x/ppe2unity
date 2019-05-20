@@ -32,7 +32,7 @@ namespace apiModele
         private void PopulateDropdown(string json)
         {
             vehicles = JsonClass.ArrayFromJson<Vehicle>(json);
-            foreach(Vehicle vehicle in vehicles)
+            foreach (Vehicle vehicle in vehicles)
             {
                 listVehicles.Add(vehicle.description + " " + vehicle.registration);
             }
@@ -53,4 +53,3 @@ namespace apiModele
         }
     }
 }
-
