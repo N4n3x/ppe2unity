@@ -7,32 +7,40 @@ using UnityEngine.Networking;
 namespace apiModele
 {
     /// <summary>
-    /// Représente un token
+    /// Token d'autentification pour l'API
     /// </summary>
     [Serializable]
     public class Token
     {
         public string token;
     }
-
+    /// <summary>
+    /// Message d'erreur envoyé par l'API
+    /// </summary>
     [Serializable]
     public class Message
     {
         public string message;
     }
-
+    /// <summary>
+    /// Catégorie d'un véhicule
+    /// </summary>
     [Serializable]
     public class Category
     {
         public string name;
     }
-
+    /// <summary>
+    /// Rôle d'un utilisateur
+    /// </summary>
     [Serializable]
     public class Role
     {
         public string name;
     }
-
+    /// <summary>
+    /// Utilisateur de l'application
+    /// </summary>
     [Serializable]
     public class User
     {
@@ -44,19 +52,28 @@ namespace apiModele
         public Role role;
         public Token token;
         public string password;
-
+        /// <summary>
+        /// Constructeur de la classe User
+        /// </summary>
+        /// <param name="userEmail">Email de l'utilisateur</param>
+        /// <param name="userPassword">Mot de passe de l'utilisateur</param>
         public User(string userEmail, string userPassword)
         {
             email = userEmail;
             password = userPassword;
         }
-
+        /// <summary>
+        /// retourne l'objet au format JSON
+        /// </summary>
+        /// <returns>JSON</returns>
         public string ToJson()
         {
             return JsonUtility.ToJson(this);
         }
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
     [Serializable]
     public class Vehicle
     {
